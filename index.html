@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Princess &amp; Prince Apartments — Rijeka</title>
+<meta name="description" content="Four family-friendly summer apartments in Rijeka, Croatia, sharing a private pool and a big garden — 3 km from the beach.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#E6157F;        /* Princess */
+  --pink-soft:#FF7CBB;
+  --pink-wash:#FFEAF4;
+  --blue:#12A6E0;        /* Prince */
+  --blue-soft:#66CDF3;
+  --blue-wash:#E4F6FD;
+  --cream:#FFF7FB;       /* pink-tinted white background */
+  --ink:#2B1D2C;         /* deep plum-charcoal */
+  --ink-soft:#6B5A6B;
+  --gold:#F2B33D;        /* crown accent */
+  --white:#ffffff;
+  --shadow:0 18px 40px -20px rgba(43,29,44,.35);
+  --shadow-sm:0 8px 20px -12px rgba(43,29,44,.4);
+  --radius:22px;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:'Nunito',system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.65;
+  font-size:17px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,.wordmark{font-family:'Fredoka',sans-serif;font-weight:600;line-height:1.12;margin:0}
+h2{font-size:clamp(1.9rem,4vw,3rem);letter-spacing:-.5px}
+h3{font-size:1.5rem}
+p{margin:0 0 1rem}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+section{padding:clamp(3.5rem,8vw,6.5rem) 0}
+.wrap{width:min(92%,var(--maxw));margin-inline:auto}
+.eyebrow{
+  font-family:'Fredoka',sans-serif;font-weight:600;text-transform:uppercase;
+  letter-spacing:.18em;font-size:.78rem;color:var(--pink);margin-bottom:.6rem;display:inline-block
+}
+.eyebrow.blue{color:var(--blue)}
+.lead{font-size:1.12rem;color:var(--ink-soft);max-width:60ch}
+.center{text-align:center}
+.center .lead{margin-inline:auto}
+
+/* icons */
+.ico{width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* buttons */
+.btn{
+  --bg:var(--pink);
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;
+  padding:.85rem 1.5rem;border-radius:999px;border:2px solid transparent;
+  background:var(--bg);color:#fff;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,background .18s;
+  box-shadow:var(--shadow-sm);white-space:nowrap
+}
+.btn:hover{transform:translateY(-2px)}
+.btn.blue{--bg:var(--blue)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:currentColor;box-shadow:none}
+.btn.ghost:hover{background:#fff}
+.btn.gold{--bg:var(--gold);color:var(--ink)}
+.btn.small{padding:.6rem 1.05rem;font-size:.9rem}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,247,251,.82);backdrop-filter:blur(12px);
+  border-bottom:1px solid #f2dbe8;transition:box-shadow .25s
+}
+.nav.scrolled{box-shadow:0 6px 20px -14px rgba(43,29,44,.5)}
+.nav-inner{display:flex;align-items:center;gap:1.2rem;padding:.7rem 0}
+.wordmark{font-size:1.35rem;font-weight:700;display:flex;align-items:center;gap:.45rem;letter-spacing:-.3px}
+.wordmark .p1{color:var(--pink)} .wordmark .amp{color:var(--gold)} .wordmark .p2{color:var(--blue)}
+.wordmark svg{width:26px;height:26px;color:var(--gold)}
+.nav-links{display:flex;gap:1.4rem;margin-left:auto;align-items:center}
+.nav-links a{font-weight:600;font-size:.96rem;color:var(--ink-soft);transition:color .15s}
+.nav-links a:hover{color:var(--pink)}
+.lang{position:relative}
+.lang-btn{display:flex;align-items:center;gap:.4rem;font-family:'Fredoka';font-weight:500;background:#fff;border:1px solid #f0d3e3;padding:.45rem .7rem;border-radius:999px;cursor:pointer;font-size:.9rem;color:var(--ink)}
+.lang-menu{position:absolute;right:0;top:115%;background:#fff;border:1px solid #f0d3e3;border-radius:14px;box-shadow:var(--shadow);padding:.35rem;display:none;min-width:150px;overflow:hidden}
+.lang-menu.open{display:block}
+.lang-menu button{display:flex;gap:.55rem;width:100%;align-items:center;background:none;border:0;padding:.55rem .7rem;border-radius:9px;cursor:pointer;font-family:'Nunito';font-weight:600;font-size:.92rem;color:var(--ink)}
+.lang-menu button:hover{background:var(--pink-wash)}
+.lang-menu button[aria-current="true"]{background:var(--pink-wash);color:var(--pink)}
+.burger{display:none;background:none;border:0;cursor:pointer;color:var(--ink);margin-left:auto}
+.burger .ico{width:28px;height:28px;stroke-width:2}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:min(88vh,760px);display:flex;align-items:center;padding:0;color:#fff;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(200deg,rgba(230,21,127,.55) 0%,rgba(43,29,44,.35) 45%,rgba(18,166,224,.55) 100%),
+             linear-gradient(180deg,rgba(43,29,44,.15),rgba(43,29,44,.55))}
+.hero-inner{position:relative;z-index:2;text-align:center;width:min(92%,860px);margin-inline:auto;padding:5rem 0}
+.hero .crown{width:64px;height:64px;color:var(--gold);margin:0 auto .8rem;filter:drop-shadow(0 4px 10px rgba(0,0,0,.3))}
+.hero-eyebrow{font-family:'Fredoka';font-weight:500;letter-spacing:.22em;text-transform:uppercase;font-size:.82rem;opacity:.95;margin-bottom:1rem;display:block}
+.hero h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:700;text-shadow:0 6px 30px rgba(0,0,0,.35);letter-spacing:-1px}
+.hero h1 .k{color:var(--pink-soft)} .hero h1 .b{color:var(--blue-soft)}
+.hero p{font-size:clamp(1.05rem,2.2vw,1.3rem);max-width:44ch;margin:1.2rem auto 2rem;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.hero-cta{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
+.scallop{position:absolute;bottom:-1px;left:0;width:100%;height:60px;z-index:3;display:block}
+
+/* ---------- HIGHLIGHTS ---------- */
+.highlights{padding:2.5rem 0}
+.hl-row{display:flex;flex-wrap:wrap;gap:.7rem 1rem;justify-content:center}
+.pill{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1px solid #f2dbe8;padding:.55rem 1rem;border-radius:999px;font-weight:700;font-size:.92rem;box-shadow:var(--shadow-sm)}
+.pill .ico{color:var(--pink);width:1.15rem;height:1.15rem}
+.pill:nth-child(even) .ico{color:var(--blue)}
+
+/* ---------- INTRO ---------- */
+.intro{background:linear-gradient(180deg,#fff,var(--cream))}
+.intro .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center}
+.intro-media{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3}
+.intro-media img{width:100%;height:100%;object-fit:cover}
+.intro-media .tag{position:absolute;left:1rem;bottom:1rem;background:rgba(255,255,255,.92);color:var(--pink);font-family:'Fredoka';font-weight:600;padding:.4rem .9rem;border-radius:999px;font-size:.85rem;display:flex;align-items:center;gap:.4rem}
+
+/* ---------- APARTMENTS PREVIEW ---------- */
+.apts{background:var(--pink-wash)}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:2.5rem}
+.card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;border-top:6px solid var(--pink)}
+.card.blue{border-top-color:var(--blue)}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.card-body{padding:1.4rem 1.4rem 1.6rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.card .badge{align-self:flex-start;display:inline-flex;align-items:center;gap:.4rem;background:var(--pink-wash);color:var(--pink);font-family:'Fredoka';font-weight:600;font-size:.8rem;padding:.3rem .7rem;border-radius:999px}
+.card.blue .badge{background:var(--blue-wash);color:var(--blue)}
+.card h3{font-size:1.35rem}
+.card p{font-size:.95rem;color:var(--ink-soft);margin:0;flex:1}
+.card .more{margin-top:.8rem;font-family:'Fredoka';font-weight:600;color:var(--pink);display:inline-flex;align-items:center;gap:.35rem;cursor:pointer}
+.card.blue .more{color:var(--blue)}
+.card .more .ico{transition:transform .2s}
+.card:hover .more .ico{transform:translateX(4px)}
+
+/* ---------- DETAIL ---------- */
+.detail{scroll-margin-top:80px}
+.detail .wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.detail:nth-of-type(even) .detail-text{order:2}
+.detail-media{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3;background:linear-gradient(135deg,var(--pink-wash),var(--blue-wash));position:relative}
+.detail-media img{width:100%;height:100%;object-fit:cover}
+.ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--ink-soft);gap:.5rem;text-align:center;padding:1rem}
+.ph .ico{width:2.4rem;height:2.4rem;opacity:.6}
+.ph span{font-size:.85rem;max-width:24ch}
+.detail-color{width:44px;height:8px;border-radius:999px;background:var(--pink);margin-bottom:1rem}
+.detail.blue-theme .detail-color{background:var(--blue)}
+.detail.blue-theme .eyebrow{color:var(--blue)}
+.detail .config{list-style:none;padding:0;margin:1.2rem 0;display:grid;gap:.55rem}
+.detail .config li{display:flex;gap:.6rem;align-items:flex-start;font-weight:600}
+.detail .config .ico{color:var(--pink);margin-top:.15rem}
+.detail.blue-theme .config .ico{color:var(--blue)}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.2rem 0 1.6rem}
+.chip{display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1px solid #efd9e6;padding:.4rem .8rem;border-radius:999px;font-size:.85rem;font-weight:700;color:var(--ink-soft)}
+.chip .ico{width:1rem;height:1rem;color:var(--pink)}
+.detail.blue-theme .chip .ico{color:var(--blue)}
+.chip.off{opacity:.55;text-decoration:line-through;text-decoration-color:var(--ink-soft)}
+
+/* ---------- SHARED SPACES ---------- */
+.shared{background:linear-gradient(180deg,var(--blue-wash),#fff)}
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:2.5rem}
+.feature:nth-child(odd of .feature) {}
+.feature.rev .feature-media{order:2}
+.feature-media{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3}
+.feature-media img{width:100%;height:100%;object-fit:cover}
+.feature ul{list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:.5rem}
+.feature li{display:flex;gap:.6rem;font-weight:600}
+.feature li .ico{color:var(--blue);flex:none}
+.feature-photos{display:flex;flex-direction:column;min-width:0}
+.feature.rev .feature-photos{order:2}
+@media(max-width:960px){ .feature.rev .feature-photos{order:0} }
+
+/* ---------- GALLERY ---------- */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:1rem;margin-top:2rem}
+.gallery-grid a{border-radius:16px;overflow:hidden;box-shadow:var(--shadow-sm);position:relative}
+.gallery-grid img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.gallery-grid a:hover img{transform:scale(1.06)}
+.g-wide{grid-column:span 2}.g-tall{grid-row:span 2}
+.g-ph{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--pink-wash),var(--blue-wash));color:var(--ink-soft);font-family:'Fredoka';font-weight:600;font-size:.9rem;text-align:center;padding:1rem}
+
+/* ---------- LOCATION ---------- */
+.location{background:var(--cream)}
+.loc-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:3rem;align-items:center;margin-top:1rem}
+.map-frame{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:6px solid #fff;line-height:0}
+.map-frame iframe{width:100%;height:380px;border:0}
+.near{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.4rem}
+.near .chip .ico{color:var(--blue)}
+
+/* ---------- CONTACT ---------- */
+.contact{background:linear-gradient(160deg,var(--pink) 0%,#c9126e 55%,var(--blue) 140%);color:#fff}
+.contact h2{color:#fff}
+.contact .lead{color:rgba(255,255,255,.9)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:3rem;margin-top:2.2rem;align-items:start}
+.quick{display:flex;flex-direction:column;gap:.9rem}
+.quick .btn{justify-content:center}
+.quick .btn.white{background:#fff;color:var(--pink)}
+.quick .btn.wa{background:#25D366;color:#fff}
+.quick .btn.air{background:#fff;color:#FF385C}
+.goodtoknow{margin-top:1.6rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:1.1rem 1.3rem}
+.goodtoknow h4{font-family:'Fredoka';margin-bottom:.6rem;font-size:1rem}
+.goodtoknow ul{list-style:none;padding:0;margin:0;display:grid;gap:.4rem}
+.goodtoknow li{display:flex;gap:.5rem;font-size:.92rem}
+.goodtoknow .ico{width:1.1rem;height:1.1rem;flex:none}
+.form{background:#fff;color:var(--ink);border-radius:var(--radius);padding:1.6rem;box-shadow:var(--shadow)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.field{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.9rem}
+.field label{font-weight:700;font-size:.85rem}
+.field input,.field select,.field textarea{
+  font-family:'Nunito';font-size:.95rem;padding:.7rem .8rem;border-radius:12px;border:1.5px solid #ecd6e3;background:#fff;color:var(--ink);width:100%
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--pink)}
+.form .actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--ink);color:#f4e7ef;padding:3rem 0 2rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem}
+footer .wordmark{color:#fff;margin-bottom:.8rem}
+footer a{color:#e9cede;font-weight:600}
+footer a:hover{color:var(--pink-soft)}
+.foot-col h4{font-family:'Fredoka';font-size:1rem;margin-bottom:.7rem;color:#fff}
+.foot-col p,.foot-col a{display:block;font-size:.93rem;margin-bottom:.4rem;color:#d9c3d2}
+.foot-bottom{border-top:1px solid #4a3a4b;margin-top:2rem;padding-top:1.3rem;text-align:center;font-size:.85rem;color:#c3aec0}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(43,29,44,.9);display:none;align-items:center;justify-content:center;z-index:100;padding:2rem}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92%;max-height:88%;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lightbox .close{position:absolute;top:1.2rem;right:1.5rem;background:#fff;border:0;border-radius:999px;width:44px;height:44px;cursor:pointer;font-size:1.3rem;color:var(--ink)}
+
+/* ---------- BRAND / LOGO ---------- */
+.brand{display:inline-flex;align-items:center}
+.brand img{height:40px;width:auto;display:block}
+.hero-logo-wrap{display:inline-block;margin:0 auto 1rem;background:rgba(255,255,255,.9);backdrop-filter:blur(6px);border-radius:28px;padding:1.2rem 2rem;box-shadow:0 22px 55px -22px rgba(0,0,0,.55)}
+.hero-logo{width:min(72vw,420px);height:auto;display:block}
+.foot-brand img{height:56px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+
+/* ---------- APARTMENT PHOTO GALLERY ---------- */
+.detail-media-wrap{display:flex;flex-direction:column}
+.apt-thumbs{display:flex;gap:.6rem;margin-top:.7rem;flex-wrap:nowrap;overflow-x:auto;max-width:100%}
+.detail-media-wrap{min-width:0}
+.apt-thumb{border:0;padding:0;background:none;border-radius:12px;overflow:hidden;cursor:pointer;width:84px;height:63px;box-shadow:var(--shadow-sm);opacity:.6;transition:opacity .2s,transform .2s,outline-color .2s;outline:2px solid transparent}
+.apt-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.apt-thumb:hover{opacity:1;transform:translateY(-2px)}
+.apt-thumb.is-active{opacity:1;outline-color:var(--pink)}
+.apt-main{cursor:zoom-in}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:960px){
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .intro .wrap,.detail .wrap,.feature,.loc-grid,.contact-grid,.foot-grid{grid-template-columns:1fr}
+  .detail:nth-of-type(even) .detail-text{order:0}
+  .feature.rev .feature-media{order:0}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  body{font-size:16px}
+  .nav-links{display:none}
+  .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:#fff;padding:1rem 6%;gap:.9rem;box-shadow:var(--shadow);border-bottom:1px solid #f2dbe8}
+  .nav-links.open .lang{margin-top:.4rem}
+  .burger{display:block}
+  .cards{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr;grid-auto-rows:200px}
+  .g-wide{grid-column:span 1}.g-tall{grid-row:span 1}
+}
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+/* --- logo senza sfondo chiaro --- */
+.hero-logo-wrap{background:none;backdrop-filter:none;box-shadow:none;padding:0;border-radius:0}
+.hero-logo{filter:drop-shadow(0 4px 14px rgba(0,0,0,.35))}
+
+/* --- testo dei bottoni leggibile al passaggio del mouse --- */
+.nav-links a.btn,
+.nav-links a.btn:hover{color:#fff}                     /* Request a quote: testo sempre bianco */
+.btn.ghost:hover{background:#fff;color:var(--pink)!important;border-color:var(--pink)!important} /* Explore: testo fucsia su bianco */
+</style>
+</head>
+<body>
+
+<!-- ICON SPRITE -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-crown" viewBox="0 0 24 24"><path d="M3 8l4 3 5-6 5 6 4-3-2 11H5L3 8z"/><path d="M5 19h14"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 5.5a3 3 0 0 1 0 5.4"/><path d="M17.5 20a5 5 0 0 0-2.4-4.3"/></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 17V8m0 9h18m0 0v-4a3 3 0 0 0-3-3H8v7"/><path d="M3 12h5"/><path d="M6 10a1.5 1.5 0 1 0 0-.01"/></symbol>
+  <symbol id="i-bath" viewBox="0 0 24 24"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3z"/><path d="M6 12V6a2 2 0 0 1 4 0"/><path d="M8 6h.01"/><path d="M6 19l-1 2m14-2l1 2"/></symbol>
+  <symbol id="i-kitchen" viewBox="0 0 24 24"><path d="M4 3h16v18H4z"/><path d="M4 9h16"/><path d="M8 5.5v1.5M11 5.5v1.5"/><path d="M8 13v4"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0"/><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><path d="M12 19h.01"/></symbol>
+  <symbol id="i-ac" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="7" rx="2"/><path d="M6 9h6"/><path d="M7 15v1M12 15v2M17 15v1"/></symbol>
+  <symbol id="i-tv" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+  <symbol id="i-fridge" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M6 10h12"/><path d="M9 6v1.5M9 12.5V15"/></symbol>
+  <symbol id="i-washer" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="13" r="4.5"/><path d="M7 6h.01M10 6h.01"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 16l1.5-5a2 2 0 0 1 1.9-1.4h7.2A2 2 0 0 1 18.5 11L20 16"/><path d="M3 16h18v3H3z"/><circle cx="7" cy="19" r="1.3"/><circle cx="17" cy="19" r="1.3"/></symbol>
+  <symbol id="i-pool" viewBox="0 0 24 24"><path d="M3 18c1.5 0 1.5 1 3 1s1.5-1 3-1 1.5 1 3 1 1.5-1 3-1 1.5 1 3 1 1.5-1 3-1"/><path d="M7 15V6a2 2 0 0 1 4 0M13 15V6a2 2 0 0 1 4 0"/><path d="M7 10h4M13 10h4"/></symbol>
+  <symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 3l5 7h-3l3 4h-4v4h-2v-4H6l3-4H6l5-7z"/><path d="M11 18h2"/></symbol>
+  <symbol id="i-beach" viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M12 20V9"/><path d="M12 9a6 6 0 0 0-8 2 8 8 0 0 1 8-2 8 8 0 0 1 8 2 6 6 0 0 0-8-2z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4V5z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></symbol>
+  <symbol id="i-no" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M6 6l12 12"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M4 18l5-5 4 4 3-3 4 4"/></symbol>
+</svg>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand"><img data-img="logo" alt="Princess & Prince Apartments"></a>
+    <button class="burger" id="burger" aria-label="Menu"><svg class="ico"><use href="#i-menu"/></svg></button>
+    <div class="nav-links" id="navLinks">
+      <a href="#apartments" data-i18n="nav_apts">Apartments</a>
+      <a href="#shared" data-i18n="nav_shared">Pool &amp; garden</a>
+      <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+      <a href="#location" data-i18n="nav_location">Location</a>
+      <a href="#contact" class="btn small" data-i18n="nav_book">Request a quote</a>
+      <div class="lang">
+        <button class="lang-btn" id="langBtn"><svg class="ico"><use href="#i-globe"/></svg><span id="langLabel">EN</span></button>
+        <div class="lang-menu" id="langMenu">
+          <button data-lang="en" aria-current="true">🇬🇧 English</button>
+          <button data-lang="de">🇩🇪 Deutsch</button>
+          <button data-lang="hr">🇭🇷 Hrvatski</button>
+          <button data-lang="pl">🇵🇱 Polski</button>
+          <button data-lang="cs">🇨🇿 Čeština</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-bg"><img data-img="pool" alt="Private pool with pink and blue sun loungers"></div>
+  <div class="hero-inner">
+    <h1 class="hero-logo-wrap"><img class="hero-logo" data-img="logo" alt="Princess & Prince Apartments"></h1>
+    <span class="hero-eyebrow" data-i18n="hero_eyebrow">Your royal summer in Rijeka</span>
+    <p data-i18n="hero_sub">Four family-friendly apartments sharing a private pool and a big garden — just 1.5 km from Kantrida Beach in Rijeka.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn gold" data-i18n="hero_cta1">Request a quote</a>
+      <a href="#apartments" class="btn ghost" style="color:#fff;border-color:#fff" data-i18n="hero_cta2">Explore the apartments</a>
+    </div>
+  </div>
+  <svg class="scallop" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,60 C150,0 300,0 450,30 C600,60 750,60 900,30 C1050,0 1150,0 1200,30 L1200,60 Z" fill="#FFF7FB"/></svg>
+</header>
+
+<!-- HIGHLIGHTS -->
+<section class="highlights">
+  <div class="wrap hl-row reveal">
+    <span class="pill"><svg class="ico"><use href="#i-pool"/></svg><span data-i18n="hl_pool">Private shared pool</span></span>
+    <span class="pill"><svg class="ico"><use href="#i-tree"/></svg><span data-i18n="hl_garden">Garden &amp; kids' play area</span></span>
+    <span class="pill"><svg class="ico"><use href="#i-car"/></svg><span data-i18n="hl_parking">Free private parking</span></span>
+    <span class="pill"><svg class="ico"><use href="#i-beach"/></svg><span data-i18n="hl_beach">1.5 km to Kantrida Beach</span></span>
+    <span class="pill"><svg class="ico"><use href="#i-wifi"/></svg><span data-i18n="hl_wifi">Free Wi-Fi</span></span>
+    <span class="pill"><svg class="ico"><use href="#i-ac"/></svg><span data-i18n="hl_ac">Air conditioning</span></span>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow" data-i18n="intro_eyebrow">Made for families</span>
+      <h2 data-i18n="intro_title">More than just an apartment</h2>
+      <p class="lead" data-i18n="intro_body">A holiday designed for families! Enjoy a spacious garden with a swimming pool, trampoline, table tennis and plenty of games where children can play freely while parents relax. A peaceful oasis just 1.5 km from Kantrida Beach and close to shops, restaurants and all essential amenities. Many families tell us their children are so happy here that they hardly want to leave during their stay!</p>
+    </div>
+    <div class="intro-media reveal">
+      <img data-img="garden" alt="Large garden with play area and terrace">
+      <span class="tag"><svg class="ico" style="width:1rem;height:1rem"><use href="#i-tree"/></svg><span data-i18n="intro_tag">Your private garden</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- APARTMENTS PREVIEW -->
+<section class="apts" id="apartments">
+  <div class="wrap center reveal">
+    <span class="eyebrow" data-i18n="apts_eyebrow">Choose your stay</span>
+    <h2 data-i18n="apts_title">Four apartments, one colourful home</h2>
+    <p class="lead center" data-i18n="apts_sub">Pick the one that fits your family. Tap “Discover more” to jump straight to the details.</p>
+  </div>
+  <div class="wrap cards">
+    <div class="card reveal">
+      <div class="card-body">
+        <span class="badge"><svg class="ico" style="width:1rem;height:1rem"><use href="#i-users"/></svg><span data-i18n="sleeps5">Sleeps 5</span></span>
+        <h3>Big Princess</h3>
+        <p data-i18n="prev_bigpr">Two bedrooms and a spacious living room with a large, comfy sofa bed. Full kitchen.</p>
+        <a class="more" data-target="#big-princess" data-i18n="discover">Discover more <svg class="ico" style="width:1rem;height:1rem"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+    <div class="card reveal">
+      <div class="card-body">
+        <span class="badge"><svg class="ico" style="width:1rem;height:1rem"><use href="#i-users"/></svg><span data-i18n="sleeps5">Sleeps 5</span></span>
+        <h3>Big Prince</h3>
+        <p data-i18n="prev_bigpn">The same generous layout as Big Princess: two bedrooms and a living room with a big, comfy sofa bed. Full kitchen.</p>
+        <a class="more" data-target="#big-prince" data-i18n="discover">Discover more <svg class="ico" style="width:1rem;height:1rem"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+    <div class="card reveal">
+      <div class="card-body">
+        <span class="badge"><svg class="ico" style="width:1rem;height:1rem"><use href="#i-users"/></svg><span data-i18n="sleeps4">Sleeps 4</span></span>
+        <h3>Young Princess</h3>
+        <p data-i18n="prev_young">A twin room plus a double bed in a living area split by a decorative wall, with kitchen and dining table.</p>
+        <a class="more" data-target="#young-princess" data-i18n="discover">Discover more <svg class="ico" style="width:1rem;height:1rem"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+    <div class="card reveal">
+      <div class="card-body">
+        <span class="badge"><svg class="ico" style="width:1rem;height:1rem"><use href="#i-users"/></svg><span data-i18n="sleeps2">Sleeps 2</span></span>
+        <h3>Small Princess</h3>
+        <p data-i18n="prev_small">A cosy double bedroom with a small living area — perfect for couples.</p>
+        <a class="more" data-target="#small-princess" data-i18n="discover">Discover more <svg class="ico" style="width:1rem;height:1rem"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL: BIG PRINCESS -->
+<section class="detail" id="big-princess">
+  <div class="wrap">
+    <div class="detail-text reveal">
+      <div class="detail-color"></div>
+      <span class="eyebrow" data-i18n="sleeps5">Sleeps 5</span>
+      <h2>Big Princess</h2>
+      <p class="lead" data-i18n="det_bigpr">Our largest layout in full Barbie pink — room for the whole family, with a big, comfortable sofa bed in the living room.</p>
+      <ul class="config">
+        <li><svg class="ico"><use href="#i-bed"/></svg><span data-i18n="cfg_2bed_sofa">2 bedrooms + a large sofa bed in the living room</span></li>
+        <li><svg class="ico"><use href="#i-kitchen"/></svg><span data-i18n="cfg_fullkitchen">Fully equipped kitchen &amp; dining area</span></li>
+        <li><svg class="ico"><use href="#i-bath"/></svg><span data-i18n="cfg_bath">1 bathroom with shower</span></li>
+      </ul>
+      <div class="chips">
+        <span class="chip"><svg class="ico"><use href="#i-wifi"/></svg>Wi-Fi</span>
+        <span class="chip"><svg class="ico"><use href="#i-ac"/></svg><span data-i18n="am_ac">Air conditioning</span></span>
+        <span class="chip"><svg class="ico"><use href="#i-tv"/></svg>TV</span>
+        <span class="chip"><svg class="ico"><use href="#i-fridge"/></svg><span data-i18n="am_fridge">Fridge</span></span>
+        <span class="chip"><svg class="ico"><use href="#i-washer"/></svg><span data-i18n="am_washer">Washing machine</span></span>
+      </div>
+      <a href="#contact" class="btn quote-btn" data-apt="Big Princess" data-i18n="quote_this">Request a quote for this apartment</a>
+    </div>
+    <div class="detail-media-wrap reveal"
+         data-photos-folder="images/big-princess"
+         data-photos-prefix="big-princess-"
+         data-photos-count="16"
+         data-photos-ext="jpeg"
+         data-photos-pad="2">
+      <div class="detail-media"><img class="apt-main" alt="Big Princess apartment interior"></div>
+      <div class="apt-thumbs"></div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL: BIG PRINCE -->
+<section class="detail" id="big-prince">
+  <div class="wrap">
+    <div class="detail-text reveal">
+      <div class="detail-color"></div>
+      <span class="eyebrow" data-i18n="sleeps5">Sleeps 5</span>
+      <h2>Big Prince</h2>
+      <p class="lead" data-i18n="det_bigpn">The same spacious layout as Big Princess, with room for a family of up to five.</p>
+      <ul class="config">
+        <li><svg class="ico"><use href="#i-bed"/></svg><span data-i18n="cfg_2bed_sofa">2 bedrooms + a large sofa bed in the living room</span></li>
+        <li><svg class="ico"><use href="#i-kitchen"/></svg><span data-i18n="cfg_fullkitchen">Fully equipped kitchen &amp; dining area</span></li>
+        <li><svg class="ico"><use href="#i-bath"/></svg><span data-i18n="cfg_bath">1 bathroom with shower</span></li>
+      </ul>
+      <div class="chips">
+        <span class="chip"><svg class="ico"><use href="#i-wifi"/></svg>Wi-Fi</span>
+        <span class="chip"><svg class="ico"><use href="#i-ac"/></svg><span data-i18n="am_ac">Air conditioning</span></span>
+        <span class="chip"><svg class="ico"><use href="#i-tv"/></svg>TV</span>
+        <span class="chip"><svg class="ico"><use href="#i-fridge"/></svg><span data-i18n="am_fridge">Fridge</span></span>
+        <span class="chip"><svg class="ico"><use href="#i-washer"/></svg><span data-i18n="am_washer">Washing machine</span></span>
+      </div>
+      <a href="#contact" class="btn quote-btn" data-apt="Big Prince" data-i18n="quote_this">Request a quote for this apartment</a>
+    </div>
+    <div class="detail-media-wrap reveal"
+         data-photos-folder="images/big-prince"
+         data-photos-prefix="big-prince-"
+         data-photos-count="15"
+         data-photos-ext="jpeg"
+         data-photos-pad="2">
+      <div class="detail-media"><img class="apt-main" alt="Big Prince apartment interior"></div>
+      <div class="apt-thumbs"></div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL: YOUNG PRINCESS -->
+<section class="detail" id="young-princess">
+  <div class="wrap">
+    <div class="detail-text reveal">
+      <div class="detail-color"></div>
+      <span class="eyebrow" data-i18n="sleeps4">Sleeps 4</span>
+      <h2>Young Princess</h2>
+      <p class="lead" data-i18n="det_young">A clever layout where a decorative wall gently separates the sleeping corner from a living area with its own kitchen and dining table.</p>
+      <ul class="config">
+        <li><svg class="ico"><use href="#i-bed"/></svg><span data-i18n="cfg_young_beds">1 room with two single beds + a double bed in the living area</span></li>
+        <li><svg class="ico"><use href="#i-kitchen"/></svg><span data-i18n="cfg_kitchen_din">Kitchen &amp; dining table</span></li>
+        <li><svg class="ico"><use href="#i-bath"/></svg><span data-i18n="cfg_bath">1 bathroom with shower</span></li>
+      </ul>
+      <div class="chips">
+        <span class="chip"><svg class="ico"><use href="#i-wifi"/></svg>Wi-Fi</span>
+        <span class="chip"><svg class="ico"><use href="#i-ac"/></svg><span data-i18n="am_ac">Air conditioning</span></span>
+        <span class="chip"><svg class="ico"><use href="#i-tv"/></svg>TV</span>
+        <span class="chip"><svg class="ico"><use href="#i-fridge"/></svg><span data-i18n="am_fridge">Fridge</span></span>
+        <span class="chip"><svg class="ico"><use href="#i-washer"/></svg><span data-i18n="am_washer">Washing machine</span></span>
+      </div>
+      <a href="#contact" class="btn quote-btn" data-apt="Young Princess" data-i18n="quote_this">Request a quote for this apartment</a>
+    </div>
+    <div class="detail-media-wrap reveal"
+         data-photos-folder="images/young-princess"
+         data-photos-prefix="young-princess-"
+         data-photos-count="6"
+         data-photos-ext="jpeg"
+         data-photos-pad="2">
+      <div class="detail-media"><img class="apt-main" alt="Young Princess apartment interior"></div>
+      <div class="apt-thumbs"></div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL: SMALL PRINCESS -->
+<section class="detail" id="small-princess">
+  <div class="wrap">
+    <div class="detail-text reveal">
+      <div class="detail-color"></div>
+      <span class="eyebrow" data-i18n="sleeps2">Sleeps 2</span>
+      <h2>Small Princess</h2>
+      <p class="lead" data-i18n="det_small">A snug retreat for two, with a double bedroom and a small living area. The cosy one — no kitchen, just everything you need for a carefree couple's escape.</p>
+      <ul class="config">
+        <li><svg class="ico"><use href="#i-bed"/></svg><span data-i18n="cfg_1double">1 double bedroom</span></li>
+        <li><svg class="ico"><use href="#i-users"/></svg><span data-i18n="cfg_smalliving">Small living area (no kitchen)</span></li>
+        <li><svg class="ico"><use href="#i-bath"/></svg><span data-i18n="cfg_bath">1 bathroom with shower</span></li>
+      </ul>
+      <div class="chips">
+        <span class="chip"><svg class="ico"><use href="#i-wifi"/></svg>Wi-Fi</span>
+        <span class="chip"><svg class="ico"><use href="#i-ac"/></svg><span data-i18n="am_ac">Air conditioning</span></span>
+        <span class="chip"><svg class="ico"><use href="#i-tv"/></svg>TV</span>
+        <span class="chip"><svg class="ico"><use href="#i-fridge"/></svg><span data-i18n="am_fridge">Fridge</span></span>
+        <span class="chip off"><svg class="ico"><use href="#i-kitchen"/></svg><span data-i18n="am_nokitchen">No kitchen</span></span>
+      </div>
+      <a href="#contact" class="btn quote-btn" data-apt="Small Princess" data-i18n="quote_this">Request a quote for this apartment</a>
+    </div>
+    <div class="detail-media-wrap reveal"
+         data-photos-folder="images/small-princess"
+         data-photos-prefix="small-princess-"
+         data-photos-count="5"
+         data-photos-ext="jpeg"
+         data-photos-pad="2">
+      <div class="detail-media"><img class="apt-main" alt="Small Princess apartment interior"></div>
+      <div class="apt-thumbs"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SHARED SPACES -->
+<section class="shared" id="shared">
+  <div class="wrap center reveal">
+    <span class="eyebrow blue" data-i18n="shared_eyebrow">Just for our guests</span>
+    <h2 data-i18n="shared_title">The pool &amp; garden are all yours</h2>
+  </div>
+  <div class="wrap">
+    <div class="feature reveal">
+      <div class="feature-photos"
+           data-photos-folder="images/pool" data-photos-prefix="pool-"
+           data-photos-count="9" data-photos-ext="jpeg" data-photos-pad="2">
+        <div class="feature-media"><img class="apt-main" alt="Private pool"></div>
+        <div class="apt-thumbs"></div>
+      </div>
+      <div>
+        <h3 data-i18n="pool_title">A pool shared only among four apartments</h3>
+        <p data-i18n="pool_body">No crowds, no strangers — our pool and terrace are reserved exclusively for guests of Princess &amp; Prince.</p>
+        <ul>
+          <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="pool_1">Sun loungers all around the poolside</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="pool_2">Outdoor shower &amp; shaded corners</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="pool_3">Safe and fun for children</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="feature rev reveal">
+      <div class="feature-photos"
+           data-photos-folder="images/garden" data-photos-prefix="garden-"
+           data-photos-count="10" data-photos-ext="jpeg" data-photos-pad="2">
+        <div class="feature-media"><img class="apt-main" alt="Garden"></div>
+        <div class="apt-thumbs"></div>
+      </div>
+      <div>
+        <h3 data-i18n="garden_title">Room to play all day</h3>
+        <p data-i18n="garden_body">The big garden gives kids space to run around while grown-ups relax on the terrace.</p>
+        <ul>
+          <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="garden_1">Children's play area &amp; ride-on toys</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="garden_2">Table tennis &amp; trampoline</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="garden_3">Shaded terrace &amp; seating</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="wrap center reveal">
+    <span class="eyebrow" data-i18n="gallery_eyebrow">A peek around</span>
+    <h2 data-i18n="gallery_title">Gallery</h2>
+    <p class="lead center" data-i18n="gallery_sub">A first look at the pool and garden.</p>
+  </div>
+  <div class="wrap gallery-grid reveal"
+     data-gallery-folder="images/gallery" data-gallery-prefix="gallery-"
+     data-gallery-count="8" data-gallery-ext="jpeg" data-gallery-pad="2">
+    <a class="g-wide g-tall" data-img-full="pool"><img data-img="pool" alt="Pool"></a>
+    <a data-img-full="garden"><img data-img="garden" alt="Garden"></a>
+    <a data-img-full="bigPrincess1"><img data-img="bigPrincess1" alt="Big Princess interior"></a>
+    
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="wrap center reveal">
+    <span class="eyebrow blue" data-i18n="loc_eyebrow">Where you'll be</span>
+    <h2 data-i18n="loc_title">Rijeka, on the Kvarner bay</h2>
+  </div>
+  <div class="wrap loc-grid">
+    <div class="reveal">
+      <p class="lead" data-i18n="loc_body">You'll find us at Marije Grbač 2, 51000 Rijeka, Croatia — about 1.5 km from Kantrida Beach and a short drive from Rijeka's lively centre, with Opatija, the island of Krk and the Učka nature park all within easy reach.</p>
+      <div class="near">
+        <span class="chip"><svg class="ico"><use href="#i-beach"/></svg><span data-i18n="near_beach">Kantrida Beach ~1.5 km</span></span>
+        <span class="chip"><svg class="ico"><use href="#i-pin"/></svg><span data-i18n="near_centre">Rijeka centre</span></span>
+        <span class="chip"><svg class="ico"><use href="#i-pin"/></svg>Opatija</span>
+        <span class="chip"><svg class="ico"><use href="#i-pin"/></svg><span data-i18n="near_krk">Krk island</span></span>
+        <span class="chip"><svg class="ico"><use href="#i-pin"/></svg><span data-i18n="near_shops">Shops &amp; restaurants</span></span>
+      </div>
+    </div>
+    <div class="map-frame reveal">
+      <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Marije%20Grbac%202,%2051000%20Rijeka,%20Croatia&output=embed"
+        title="Map of Marije Grbač 2, Rijeka"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap center reveal">
+    <span class="eyebrow" style="color:#ffe0ef" data-i18n="contact_eyebrow">Let's plan your holiday</span>
+    <h2 data-i18n="contact_title">Ready for your royal summer?</h2>
+    <p class="lead center" data-i18n="contact_sub">Tell us your dates and which apartment you like, and we'll send you a personalised quote.</p>
+  </div>
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <div class="quick">
+        <a class="btn white" href="mailto:appartamenti.mio@gmail.com"><svg class="ico"><use href="#i-mail"/></svg> appartamenti.mio@gmail.com</a>
+        <a class="btn wa" href="https://wa.me/385923036674"><svg class="ico"><use href="#i-chat"/></svg> WhatsApp: +385 92 303 6674</a>
+        <a class="btn air" href="#" id="airbnbLink" target="_blank" rel="noopener"><svg class="ico"><use href="#i-arrow"/></svg> <span data-i18n="view_airbnb">View us on Airbnb</span></a>
+      </div>
+      <div class="goodtoknow">
+        <h4 data-i18n="gtk_title">Good to know</h4>
+        <ul>
+          <li><svg class="ico"><use href="#i-clock"/></svg><span data-i18n="gtk_checkin">Check-in from 15:00</span></li>
+          <li><svg class="ico"><use href="#i-clock"/></svg><span data-i18n="gtk_checkout">Check-out by 10:00</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="gtk_nomin">No minimum stay</span></li>
+          <li><svg class="ico"><use href="#i-no"/></svg><span data-i18n="gtk_nopets">Pets not allowed</span></li>
+          <li><svg class="ico"><use href="#i-car"/></svg><span data-i18n="gtk_parking">2 free private parking spaces + free street parking nearby</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="form reveal">
+      <div class="form-row">
+        <div class="field"><label data-i18n="f_name">Name</label><input type="text" id="f_name"></div>
+        <div class="field"><label data-i18n="f_email">Email</label><input type="email" id="f_email"></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label data-i18n="f_checkin">Check-in</label><input type="date" id="f_checkin"></div>
+        <div class="field"><label data-i18n="f_checkout">Check-out</label><input type="date" id="f_checkout"></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label data-i18n="f_apt">Apartment</label>
+          <select id="f_apt">
+            <option data-i18n="f_any">No preference</option>
+            <option>Big Princess</option><option>Big Prince</option>
+            <option>Young Princess</option><option>Small Princess</option>
+          </select>
+        </div>
+        <div class="field"><label data-i18n="f_guests">Guests</label><input type="number" id="f_guests" min="1" max="10" value="2"></div>
+      </div>
+      <div class="field"><label data-i18n="f_msg">Message</label><textarea id="f_msg" rows="3"></textarea></div>
+      <div class="actions">
+        <button class="btn" id="sendMail"><svg class="ico"><use href="#i-mail"/></svg><span data-i18n="send_mail">Send by email</span></button>
+        <button class="btn wa" id="sendWa"><svg class="ico"><use href="#i-chat"/></svg><span data-i18n="send_wa">Send by WhatsApp</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <a href="#top" class="brand foot-brand"><img data-img="logo" alt="Princess & Prince Apartments"></a>
+      <p style="color:#d9c3d2;max-width:34ch" data-i18n="foot_tag">Four family-friendly apartments with a private pool and garden in Rijeka, Croatia.</p>
+    </div>
+    <div class="foot-col">
+      <h4 data-i18n="foot_visit">Visit</h4>
+      <a href="#apartments" data-i18n="nav_apts">Apartments</a>
+      <a href="#shared" data-i18n="nav_shared">Pool &amp; garden</a>
+      <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+      <a href="#location" data-i18n="nav_location">Location</a>
+    </div>
+    <div class="foot-col">
+      <h4 data-i18n="foot_contact">Contact</h4>
+      <a href="mailto:appartamenti.mio@gmail.com">appartamenti.mio@gmail.com</a>
+      <a href="https://wa.me/385923036674">+385 92 303 6674</a>
+      <p>Marije Grbač 2<br>51000 Rijeka, Croatia</p>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">© <span id="year"></span> Princess &amp; Prince Apartments · Rijeka, Croatia</div>
+</footer>
+
+<div class="lightbox" id="lightbox"><button class="close" id="lbClose">✕</button><img id="lbImg" src="" alt=""></div>
+
+<script>
+/* ---------- images (embedded once, reused everywhere) ---------- */
+var IMG = {
+  pool:         "images/pool-01.jpg",
+  garden:       "images/garden-01.jpg",
+  logo:         "images/logo.png",
+  bigPrincess1: "images/big-princess-01.jpg"
+};
+document.querySelectorAll('[data-img]').forEach(function(el){ el.src = IMG[el.dataset.img]; });
+
+/* ---------- Airbnb placeholder link ---------- */
+var AIRBNB_URL = "https://www.airbnb.com/users/profile/1467358353871896275";
+document.getElementById('airbnbLink').href = AIRBNB_URL;
+
+/* ---------- year ---------- */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---------- nav scroll shadow + burger ---------- */
+var nav = document.getElementById('nav');
+addEventListener('scroll', function(){ nav.classList.toggle('scrolled', scrollY > 20); });
+var burger = document.getElementById('burger'), navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
+navLinks.addEventListener('click', function(e){ if(e.target.tagName==='A') navLinks.classList.remove('open'); });
+
+/* ---------- "Discover more" smooth scroll ---------- */
+document.querySelectorAll('.more').forEach(function(el){
+  el.addEventListener('click', function(){
+    var t = document.querySelector(el.dataset.target);
+    if(t) t.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+
+/* ---------- per-apartment quote: preselect in form ---------- */
+document.querySelectorAll('.quote-btn').forEach(function(b){
+  b.addEventListener('click', function(){
+    var sel = document.getElementById('f_apt');
+    [].forEach.call(sel.options, function(o){ if(o.value===b.dataset.apt) sel.value=b.dataset.apt; });
+  });
+});
+
+/* ---------- contact form -> email / whatsapp ---------- */
+function buildMsg(){
+  var g = function(id){ return (document.getElementById(id).value||'').trim(); };
+  var L = TR[curLang];
+  return (L.msg_name||'Name')+': '+g('f_name')+'\n'+
+         (L.f_email||'Email')+': '+g('f_email')+'\n'+
+         (L.f_checkin||'Check-in')+': '+g('f_checkin')+'\n'+
+         (L.f_checkout||'Check-out')+': '+g('f_checkout')+'\n'+
+         (L.f_apt||'Apartment')+': '+g('f_apt')+'\n'+
+         (L.f_guests||'Guests')+': '+g('f_guests')+'\n\n'+g('f_msg');
+}
+document.getElementById('sendMail').addEventListener('click', function(){
+  var subject = 'Quote request — Princess & Prince Apartments';
+  location.href = 'mailto:appartamenti.mio@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(buildMsg());
+});
+document.getElementById('sendWa').addEventListener('click', function(){
+  window.open('https://wa.me/385923036674?text='+encodeURIComponent(buildMsg()), '_blank');
+});
+
+/* ---------- gallery lightbox ---------- */
+var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg');
+document.querySelectorAll('.gallery-grid a[data-img-full]').forEach(function(a){
+  a.style.cursor='zoom-in';
+  a.addEventListener('click', function(){ lbImg.src=IMG[a.dataset.imgFull]; lb.classList.add('open'); });
+});
+function closeLb(){ lb.classList.remove('open'); }
+document.getElementById('lbClose').addEventListener('click', closeLb);
+lb.addEventListener('click', function(e){ if(e.target===lb) closeLb(); });
+addEventListener('keydown', function(e){ if(e.key==='Escape') closeLb(); });
+
+/* ---------- per-apartment photo gallery ---------- */
+document.querySelectorAll('.apt-thumbs').forEach(function(row){
+  row.addEventListener('click', function(e){
+    var btn=e.target.closest('.apt-thumb'); if(!btn) return;
+    var main=row.parentElement.querySelector('.apt-main');
+    main.src=btn.querySelector('img').src;
+    row.querySelectorAll('.apt-thumb').forEach(function(t){t.classList.remove('is-active');});
+    btn.classList.add('is-active');
+  });
+});
+document.querySelectorAll('.apt-main').forEach(function(m){
+  m.addEventListener('click', function(){ lbImg.src=m.src; lb.classList.add('open'); });
+});
+
+/* ---------- scroll reveal ---------- */
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+/* ---------- i18n ---------- */
+var TR = {
+  en:{},
+  de:{"nav_apts": "Apartments", "nav_shared": "Pool & Garten", "nav_gallery": "Galerie", "nav_location": "Lage", "nav_book": "Angebot anfragen", "hero_eyebrow": "Ihr königlicher Sommer in Rijeka", "hero_sub": "Vier familienfreundliche Apartments mit gemeinsamem Privatpool und großem Garten – nur 1,5 km vom Strand Kantrida in Rijeka entfernt.", "hero_cta1": "Angebot anfragen", "hero_cta2": "Apartments entdecken", "hl_pool": "Privater gemeinsamer Pool", "hl_garden": "Garten & Spielbereich", "hl_parking": "Kostenlose Privatparkplätze", "hl_beach": "1,5 km zum Strand Kantrida", "hl_wifi": "Kostenloses WLAN", "hl_ac": "Klimaanlage", "intro_eyebrow": "Für Familien gemacht", "intro_title": "Mehr als nur ein Apartment", "intro_body": "Ein Urlaub, der speziell für Familien gemacht ist! Ein großer Garten mit Pool, Trampolin, Tischtennis und vielen Spielmöglichkeiten lädt Kinder zum unbeschwerten Spielen ein, während sich die Eltern entspannen können. Eine ruhige Oase, nur 1,5 km vom Strand Kantrida entfernt und in der Nähe von Geschäften, Restaurants und allen wichtigen Einrichtungen. Viele Familien erzählen uns, dass ihre Kinder hier so glücklich sind, dass sie das Grundstück während des Aufenthalts gar nicht verlassen möchten!", "intro_tag": "Ihr privater Garten", "apts_eyebrow": "Wählen Sie Ihren Aufenthalt", "apts_title": "Vier Apartments, ein buntes Zuhause", "apts_sub": "Wählen Sie das passende für Ihre Familie. Tippen Sie auf „Mehr erfahren“, um direkt zu den Details zu springen.", "sleeps5": "Für 5 Gäste", "sleeps4": "Für 4 Gäste", "sleeps2": "Für 2 Gäste", "discover": "Mehr erfahren", "prev_bigpr": "Zwei Schlafzimmer und ein großzügiges Wohnzimmer mit großem, bequemem Schlafsofa. Voll ausgestattete Küche.", "prev_bigpn": "Dasselbe großzügige Layout wie Big Princess: zwei Schlafzimmer und ein Wohnzimmer mit großem, bequemem Schlafsofa. Voll ausgestattete Küche.", "prev_young": "Ein Zweibettzimmer plus ein Doppelbett in einem durch eine dekorative Wand geteilten Wohnbereich, mit Küche und Esstisch.", "prev_small": "Ein gemütliches Doppelzimmer mit kleinem Wohnbereich – perfekt für Paare.", "det_bigpr": "Unser größtes Layout in kräftigem Barbie-Pink – Platz für die ganze Familie, mit einem großen, bequemen Schlafsofa im Wohnzimmer.", "det_bigpn": "Dasselbe geräumige Layout wie Big Princess – ideal für eine Familie mit bis zu fünf Personen.", "det_young": "Ein cleveres Layout, bei dem eine dekorative Wand die Schlafecke sanft vom Wohnbereich mit eigener Küche und Esstisch trennt.", "det_small": "Ein gemütlicher Rückzugsort für zwei, mit Doppelzimmer und kleinem Wohnbereich. Der kuschelige – ohne Küche, aber mit allem für eine unbeschwerte Auszeit zu zweit.", "cfg_2bed_sofa": "2 Schlafzimmer + großes Schlafsofa im Wohnzimmer", "cfg_fullkitchen": "Voll ausgestattete Küche & Essbereich", "cfg_bath": "1 Badezimmer mit Dusche", "cfg_young_beds": "1 Zimmer mit zwei Einzelbetten + Doppelbett im Wohnbereich", "cfg_kitchen_din": "Küche & Esstisch", "cfg_1double": "1 Doppelschlafzimmer", "cfg_smalliving": "Kleiner Wohnbereich (keine Küche)", "am_ac": "Klimaanlage", "am_fridge": "Kühlschrank", "am_washer": "Waschmaschine", "am_nokitchen": "Keine Küche", "quote_this": "Angebot für dieses Apartment anfragen", "ph_interior": "Innenfotos folgen in Kürze", "shared_eyebrow": "Nur für unsere Gäste", "shared_title": "Pool & Garten gehören ganz Ihnen", "pool_title": "Ein Pool nur für vier Apartments", "pool_body": "Keine Menschenmassen, keine Fremden – Pool und Terrasse sind ausschließlich für Gäste von Princess & Prince reserviert.", "pool_1": "Liegen rund um den Pool", "pool_2": "Außendusche & schattige Ecken", "pool_3": "Sicher und schön für Kinder", "garden_title": "Platz zum Spielen den ganzen Tag", "garden_body": "Der große Garten bietet Kindern Raum zum Toben, während die Großen auf der Terrasse entspannen.", "garden_1": "Spielbereich & Rutschautos für Kinder", "garden_2": "Tischtennis & Trampolin", "garden_3": "Schattige Terrasse & Sitzplätze", "gallery_eyebrow": "Ein kleiner Rundgang", "gallery_title": "Galerie", "gallery_sub": "Ein erster Blick auf Pool und Garten. Weitere Fotos – auch der Innenräume – folgen in Kürze.", "gallery_ph1": "Big Princess – innen", "gallery_ph2": "Big Prince – innen", "gallery_ph3": "Young Princess & Small Princess", "loc_eyebrow": "Wo Sie sein werden", "loc_title": "Rijeka, an der Kvarner-Bucht", "loc_body": "Sie finden uns in der Marije Grbač 2, 51000 Rijeka, Kroatien – etwa 1,5 km vom Strand Kantrida und eine kurze Fahrt vom lebhaften Zentrum Rijekas entfernt, mit Opatija, der Insel Krk und dem Naturpark Učka in leichter Reichweite.", "near_beach": "Strand Kantrida ~1,5 km", "near_centre": "Zentrum Rijeka", "near_krk": "Insel Krk", "near_shops": "Geschäfte & Restaurants", "contact_eyebrow": "Planen wir Ihren Urlaub", "contact_title": "Bereit für Ihren königlichen Sommer?", "contact_sub": "Nennen Sie uns Ihre Daten und Ihr Wunsch-Apartment, und wir senden Ihnen ein persönliches Angebot.", "view_airbnb": "Auf Airbnb ansehen", "gtk_title": "Gut zu wissen", "gtk_checkin": "Check-in ab 15:00 Uhr", "gtk_checkout": "Check-out bis 10:00 Uhr", "gtk_nomin": "Kein Mindestaufenthalt", "gtk_nopets": "Haustiere nicht erlaubt", "gtk_parking": "2 kostenlose Privatparkplätze + kostenlose Parkplätze in der Nähe", "f_name": "Name", "f_email": "E-Mail", "f_checkin": "Anreise", "f_checkout": "Abreise", "f_apt": "Apartment", "f_any": "Keine Präferenz", "f_guests": "Gäste", "f_msg": "Nachricht", "send_mail": "Per E-Mail senden", "send_wa": "Per WhatsApp senden", "msg_name": "Name", "foot_tag": "Vier familienfreundliche Apartments mit Privatpool und Garten in Rijeka, Kroatien.", "foot_visit": "Besuchen", "foot_contact": "Kontakt"},
+  pl:{"nav_apts": "Apartamenty", "nav_shared": "Basen i ogród", "nav_gallery": "Galeria", "nav_location": "Lokalizacja", "nav_book": "Zapytaj o cenę", "hero_eyebrow": "Twoje królewskie lato w Rijece", "hero_sub": "Cztery przyjazne rodzinom apartamenty ze wspólnym prywatnym basenem i dużym ogrodem – zaledwie 1,5 km od plaży Kantrida w Rijece.", "hero_cta1": "Zapytaj o cenę", "hero_cta2": "Zobacz apartamenty", "hl_pool": "Prywatny wspólny basen", "hl_garden": "Ogród i plac zabaw", "hl_parking": "Bezpłatny prywatny parking", "hl_beach": "1,5 km do plaży Kantrida", "hl_wifi": "Bezpłatne Wi-Fi", "hl_ac": "Klimatyzacja", "intro_eyebrow": "Stworzone dla rodzin", "intro_title": "To coś więcej niż apartament", "intro_body": "To wakacje stworzone z myślą o rodzinach! Do dyspozycji Gości jest duży ogród z basenem, trampoliną, stołem do ping-ponga oraz wieloma atrakcjami, gdzie dzieci mogą bawić się bez ograniczeń, a dorośli odpoczywać. To spokojna oaza położona zaledwie 1,5 km od plaży Kantrida, blisko sklepów, restauracji i wszystkich najważniejszych udogodnień. Wiele rodzin mówi nam, że ich dzieci są tutaj tak szczęśliwe, że nie chcą nawet opuszczać obiektu podczas pobytu!", "intro_tag": "Twój prywatny ogród", "apts_eyebrow": "Wybierz swój pobyt", "apts_title": "Cztery apartamenty, jeden kolorowy dom", "apts_sub": "Wybierz ten idealny dla Twojej rodziny. Kliknij „Zobacz więcej“, aby przejść do szczegółów.", "sleeps5": "Dla 5 osób", "sleeps4": "Dla 4 osób", "sleeps2": "Dla 2 osób", "discover": "Zobacz więcej", "prev_bigpr": "Dwie sypialnie i przestronny salon z dużą, wygodną sofą. W pełni wyposażona kuchnia.", "prev_bigpn": "Taki sam przestronny układ jak Big Princess: dwie sypialnie i salon z dużą, wygodną sofą. W pełni wyposażona kuchnia.", "prev_young": "Pokój z dwoma łóżkami oraz łóżko podwójne w części dziennej oddzielonej ścianką dekoracyjną, z kuchnią i stołem.", "prev_small": "Przytulna sypialnia z łóżkiem podwójnym i małą częścią dzienną – idealna dla par.", "det_bigpr": "Nasz największy układ w barbie różu – miejsce dla całej rodziny, z dużą, wygodną sofą w salonie.", "det_bigpn": "Taki sam przestronny układ jak Big Princess – idealny dla rodziny do pięciu osób.", "det_young": "Sprytny układ, w którym ścianka dekoracyjna delikatnie oddziela część sypialną od salonu z własną kuchnią i stołem.", "det_small": "Przytulne miejsce dla dwojga, z sypialnią i małą częścią dzienną. Bez kuchni – za to ze wszystkim, czego trzeba na beztroski wypoczynek we dwoje.", "cfg_2bed_sofa": "2 sypialnie + duża sofa w salonie", "cfg_fullkitchen": "W pełni wyposażona kuchnia i jadalnia", "cfg_bath": "1 łazienka z prysznicem", "cfg_young_beds": "1 pokój z dwoma łóżkami pojedynczymi + łóżko podwójne w części dziennej", "cfg_kitchen_din": "Kuchnia i stół", "cfg_1double": "1 sypialnia z łóżkiem podwójnym", "cfg_smalliving": "Mała część dzienna (bez kuchni)", "am_ac": "Klimatyzacja", "am_fridge": "Lodówka", "am_washer": "Pralka", "am_nokitchen": "Bez kuchni", "quote_this": "Zapytaj o cenę tego apartamentu", "ph_interior": "Zdjęcia wnętrz wkrótce", "shared_eyebrow": "Tylko dla naszych Gości", "shared_title": "Basen i ogród są tylko dla Was", "pool_title": "Basen tylko dla czterech apartamentów", "pool_body": "Bez tłumów i obcych – basen i taras są zarezerwowane wyłącznie dla Gości Princess & Prince.", "pool_1": "Leżaki wokół basenu", "pool_2": "Prysznic zewnętrzny i zacienione miejsca", "pool_3": "Bezpieczny i przyjemny dla dzieci", "garden_title": "Miejsce do zabawy przez cały dzień", "garden_body": "Duży ogród daje dzieciom przestrzeń do zabawy, a dorosłym odpoczynek na tarasie.", "garden_1": "Plac zabaw i jeździki dla dzieci", "garden_2": "Tenis stołowy i trampolina", "garden_3": "Zacieniony taras i miejsca do siedzenia", "gallery_eyebrow": "Zajrzyj do środka", "gallery_title": "Galeria", "gallery_sub": "Pierwszy rzut oka na basen i ogród. Więcej zdjęć – w tym wnętrz – już wkrótce.", "gallery_ph1": "Big Princess – wnętrze", "gallery_ph2": "Big Prince – wnętrze", "gallery_ph3": "Young Princess i Small Princess", "loc_eyebrow": "Gdzie się znajdziesz", "loc_title": "Rijeka, nad zatoką Kvarner", "loc_body": "Znajdziesz nas przy Marije Grbač 2, 51000 Rijeka, Chorwacja – około 1,5 km od plaży Kantrida i kilka minut od tętniącego życiem centrum Rijeki, z Opatiją, wyspą Krk i parkiem przyrody Učka w zasięgu ręki.", "near_beach": "Plaża Kantrida ~1,5 km", "near_centre": "Centrum Rijeki", "near_krk": "Wyspa Krk", "near_shops": "Sklepy i restauracje", "contact_eyebrow": "Zaplanujmy Twój urlop", "contact_title": "Gotowi na królewskie lato?", "contact_sub": "Podaj nam terminy i wybrany apartament, a przyślemy spersonalizowaną wycenę.", "view_airbnb": "Zobacz nas na Airbnb", "gtk_title": "Warto wiedzieć", "gtk_checkin": "Zameldowanie od 15:00", "gtk_checkout": "Wymeldowanie do 10:00", "gtk_nomin": "Bez minimalnego pobytu", "gtk_nopets": "Zwierzęta niedozwolone", "gtk_parking": "2 bezpłatne miejsca prywatne + bezpłatny parking w pobliżu", "f_name": "Imię", "f_email": "E-mail", "f_checkin": "Przyjazd", "f_checkout": "Wyjazd", "f_apt": "Apartament", "f_any": "Bez preferencji", "f_guests": "Goście", "f_msg": "Wiadomość", "send_mail": "Wyślij e-mailem", "send_wa": "Wyślij przez WhatsApp", "msg_name": "Imię", "foot_tag": "Cztery przyjazne rodzinom apartamenty z prywatnym basenem i ogrodem w Rijece, Chorwacja.", "foot_visit": "Zwiedzaj", "foot_contact": "Kontakt"},
+  cs:{"nav_apts": "Apartmány", "nav_shared": "Bazén a zahrada", "nav_gallery": "Galerie", "nav_location": "Poloha", "nav_book": "Poptat cenu", "hero_eyebrow": "Vaše královské léto v Rijece", "hero_sub": "Čtyři rodinné apartmány se společným soukromým bazénem a velkou zahradou – jen 1,5 km od pláže Kantrida v Rijece.", "hero_cta1": "Poptat cenu", "hero_cta2": "Prohlédnout apartmány", "hl_pool": "Soukromý společný bazén", "hl_garden": "Zahrada a dětské hřiště", "hl_parking": "Bezplatné soukromé parkování", "hl_beach": "1,5 km k pláži Kantrida", "hl_wifi": "Wi-Fi zdarma", "hl_ac": "Klimatizace", "intro_eyebrow": "Stvořeno pro rodiny", "intro_title": "Více než jen apartmán", "intro_body": "Dovolená navržená pro rodiny! Prostorná zahrada s bazénem, trampolínou, stolním tenisem a spoustou her nabízí dětem prostor pro bezstarostnou zábavu, zatímco si rodiče mohou odpočinout. Klidná oáza jen 1,5 km od pláže Kantrida, v blízkosti obchodů, restaurací a všech důležitých služeb. Mnoho rodin nám říká, že jejich děti jsou tu tak šťastné, že se jim během pobytu ani nechce odcházet!", "intro_tag": "Vaše soukromá zahrada", "apts_eyebrow": "Vyberte si svůj pobyt", "apts_title": "Čtyři apartmány, jeden barevný dům", "apts_sub": "Vyberte si ten pravý pro vaši rodinu. Klikněte na „Zjistit více“ a přejděte rovnou k detailům.", "sleeps5": "Pro 5 osob", "sleeps4": "Pro 4 osoby", "sleeps2": "Pro 2 osoby", "discover": "Zjistit více", "prev_bigpr": "Dvě ložnice a prostorný obývací pokoj s velkou pohodlnou rozkládací pohovkou. Plně vybavená kuchyně.", "prev_bigpn": "Stejné velkorysé uspořádání jako Big Princess: dvě ložnice a obývací pokoj s velkou pohodlnou rozkládací pohovkou. Plně vybavená kuchyně.", "prev_young": "Pokoj se dvěma lůžky a manželská postel v obývací části oddělené dekorativní stěnou, s kuchyní a jídelním stolem.", "prev_small": "Útulná ložnice s manželskou postelí a malou obývací částí – ideální pro páry.", "det_bigpr": "Naše největší uspořádání v barbie růžové – místo pro celou rodinu, s velkou pohodlnou rozkládací pohovkou v obývacím pokoji.", "det_bigpn": "Stejně prostorné uspořádání jako Big Princess – ideální pro rodinu až o pěti osobách.", "det_young": "Chytré uspořádání, kde dekorativní stěna jemně odděluje spací kout od obývací části s vlastní kuchyní a jídelním stolem.", "det_small": "Útulné zázemí pro dva, s ložnicí a malou obývací částí. Bez kuchyně – zato se vším, co potřebujete pro bezstarostný pobyt ve dvou.", "cfg_2bed_sofa": "2 ložnice + velká rozkládací pohovka v obývacím pokoji", "cfg_fullkitchen": "Plně vybavená kuchyně a jídelní kout", "cfg_bath": "1 koupelna se sprchou", "cfg_young_beds": "1 pokoj se dvěma jednolůžky + manželská postel v obývací části", "cfg_kitchen_din": "Kuchyně a jídelní stůl", "cfg_1double": "1 ložnice s manželskou postelí", "cfg_smalliving": "Malá obývací část (bez kuchyně)", "am_ac": "Klimatizace", "am_fridge": "Lednice", "am_washer": "Pračka", "am_nokitchen": "Bez kuchyně", "quote_this": "Poptat cenu tohoto apartmánu", "ph_interior": "Fotky interiéru již brzy", "shared_eyebrow": "Jen pro naše hosty", "shared_title": "Bazén a zahrada jsou jen vaše", "pool_title": "Bazén jen pro čtyři apartmány", "pool_body": "Žádné davy, žádní cizí lidé – bazén a terasa jsou vyhrazeny výhradně hostům Princess & Prince.", "pool_1": "Lehátka kolem bazénu", "pool_2": "Venkovní sprcha a stinná zákoutí", "pool_3": "Bezpečné a zábavné pro děti", "garden_title": "Prostor pro hru po celý den", "garden_body": "Velká zahrada dává dětem prostor k pohybu, zatímco dospělí odpočívají na terase.", "garden_1": "Dětské hřiště a odrážedla", "garden_2": "Stolní tenis a trampolína", "garden_3": "Stinná terasa a posezení", "gallery_eyebrow": "Nahlédněte dovnitř", "gallery_title": "Galerie", "gallery_sub": "První pohled na bazén a zahradu. Další fotky – včetně interiérů – již brzy.", "gallery_ph1": "Big Princess – interiér", "gallery_ph2": "Big Prince – interiér", "gallery_ph3": "Young Princess a Small Princess", "loc_eyebrow": "Kde budete", "loc_title": "Rijeka, u Kvarnerského zálivu", "loc_body": "Najdete nás na adrese Marije Grbač 2, 51000 Rijeka, Chorvatsko – asi 1,5 km od pláže Kantrida a kousek od živého centra Rijeky, s Opatijí, ostrovem Krk a přírodním parkem Učka snadno na dosah.", "near_beach": "Pláž Kantrida ~1,5 km", "near_centre": "Centrum Rijeky", "near_krk": "Ostrov Krk", "near_shops": "Obchody a restaurace", "contact_eyebrow": "Naplánujme vaši dovolenou", "contact_title": "Připraveni na královské léto?", "contact_sub": "Napište nám termíny a vybraný apartmán a my vám pošleme cenovou nabídku na míru.", "view_airbnb": "Prohlédnout na Airbnb", "gtk_title": "Dobré vědět", "gtk_checkin": "Check-in od 15:00", "gtk_checkout": "Check-out do 10:00", "gtk_nomin": "Bez minimální délky pobytu", "gtk_nopets": "Domácí mazlíčci nejsou povoleni", "gtk_parking": "2 bezplatná soukromá parkovací místa + bezplatné parkování poblíž", "f_name": "Jméno", "f_email": "E-mail", "f_checkin": "Příjezd", "f_checkout": "Odjezd", "f_apt": "Apartmán", "f_any": "Bez preference", "f_guests": "Hosté", "f_msg": "Zpráva", "send_mail": "Odeslat e-mailem", "send_wa": "Odeslat přes WhatsApp", "msg_name": "Jméno", "foot_tag": "Čtyři rodinné apartmány se soukromým bazénem a zahradou v Rijece, Chorvatsko.", "foot_visit": "Prohlídka", "foot_contact": "Kontakt"},
+  hr:{"nav_apts": "Apartmani", "nav_shared": "Bazen i vrt", "nav_gallery": "Galerija", "nav_location": "Lokacija", "nav_book": "Zatraži ponudu", "hero_eyebrow": "Vaše kraljevsko ljeto u Rijeci", "hero_sub": "Četiri apartmana prilagođena obiteljima sa zajedničkim privatnim bazenom i velikim vrtom – samo 1,5 km od plaže Kantrida u Rijeci.", "hero_cta1": "Zatraži ponudu", "hero_cta2": "Pogledaj apartmane", "hl_pool": "Privatni zajednički bazen", "hl_garden": "Vrt i dječje igralište", "hl_parking": "Besplatni privatni parking", "hl_beach": "1,5 km do plaže Kantrida", "hl_wifi": "Besplatni Wi-Fi", "hl_ac": "Klima uređaj", "intro_eyebrow": "Stvoreno za obitelji", "intro_title": "Više od apartmana", "intro_body": "Odmor stvoren za obitelji! Uživajte u prostranom vrtu s bazenom, trampolinom, stolom za stolni tenis i brojnim igrama u kojima djeca mogu bezbrižno uživati, dok se roditelji opuštaju. Mirna oaza udaljena samo 1,5 km od plaže Kantrida te u blizini trgovina, restorana i svih važnih sadržaja. Mnoge obitelji kažu nam da su njihova djeca ovdje toliko sretna da tijekom boravka jedva žele napustiti imanje!", "intro_tag": "Vaš privatni vrt", "apts_eyebrow": "Odaberite svoj boravak", "apts_title": "Četiri apartmana, jedan šareni dom", "apts_sub": "Odaberite onaj koji odgovara vašoj obitelji. Kliknite „Saznaj više“ za prijelaz na detalje.", "sleeps5": "Za 5 osoba", "sleeps4": "Za 4 osobe", "sleeps2": "Za 2 osobe", "discover": "Saznaj više", "prev_bigpr": "Dvije spavaće sobe i prostrana dnevna soba s velikim, udobnim kaučem na razvlačenje. Potpuno opremljena kuhinja.", "prev_bigpn": "Isti prostrani raspored kao Big Princess: dvije spavaće sobe i dnevna soba s velikim kaučem na razvlačenje. Potpuno opremljena kuhinja.", "prev_young": "Soba s dva kreveta te bračni krevet u dnevnom boravku odvojenom ukrasnim zidom, s kuhinjom i blagovaonskim stolom.", "prev_small": "Ugodna spavaća soba s bračnim krevetom i malim dnevnim boravkom – idealno za parove.", "det_bigpr": "Naš najveći raspored u punoj barbie rozoj boji – prostora za cijelu obitelj, s velikim, udobnim kaučem na razvlačenje u dnevnoj sobi.", "det_bigpn": "Isti prostrani raspored kao Big Princess – idealno za obitelj do pet osoba.", "det_young": "Pametan raspored u kojem ukrasni zid nježno odvaja spavaći kutak od dnevnog boravka s vlastitom kuhinjom i blagovaonskim stolom.", "det_small": "Ugodno utočište za dvoje, sa spavaćom sobom i malim dnevnim boravkom. Bez kuhinje – ali sa svime što je potrebno za bezbrižan odmor udvoje.", "cfg_2bed_sofa": "2 spavaće sobe + veliki kauč na razvlačenje u dnevnoj sobi", "cfg_fullkitchen": "Potpuno opremljena kuhinja i blagovaonica", "cfg_bath": "1 kupaonica s tušem", "cfg_young_beds": "1 soba s dva jednokrevetna kreveta + bračni krevet u dnevnom boravku", "cfg_kitchen_din": "Kuhinja i blagovaonski stol", "cfg_1double": "1 spavaća soba s bračnim krevetom", "cfg_smalliving": "Mali dnevni boravak (bez kuhinje)", "am_ac": "Klima uređaj", "am_fridge": "Hladnjak", "am_washer": "Perilica rublja", "am_nokitchen": "Bez kuhinje", "quote_this": "Zatraži ponudu za ovaj apartman", "ph_interior": "Fotografije interijera uskoro", "shared_eyebrow": "Samo za naše goste", "shared_title": "Bazen i vrt samo su vaši", "pool_title": "Bazen samo za četiri apartmana", "pool_body": "Bez gužve i stranaca – bazen i terasa rezervirani su isključivo za goste Princess & Prince.", "pool_1": "Ležaljke oko bazena", "pool_2": "Vanjski tuš i zasjenjeni kutci", "pool_3": "Sigurno i zabavno za djecu", "garden_title": "Prostor za igru cijeli dan", "garden_body": "Veliki vrt pruža djeci prostor za igru, dok se odrasli opuštaju na terasi.", "garden_1": "Dječje igralište i guralice", "garden_2": "Stolni tenis i trampolin", "garden_3": "Zasjenjena terasa i mjesta za sjedenje", "gallery_eyebrow": "Zavirite unutra", "gallery_title": "Galerija", "gallery_sub": "Prvi pogled na bazen i vrt. Više fotografija – uključujući interijere – uskoro.", "gallery_ph1": "Big Princess – interijer", "gallery_ph2": "Big Prince – interijer", "gallery_ph3": "Young Princess i Small Princess", "loc_eyebrow": "Gdje ćete biti", "loc_title": "Rijeka, na Kvarnerskom zaljevu", "loc_body": "Pronaći ćete nas na adresi Marije Grbač 2, 51000 Rijeka, Hrvatska – oko 1,5 km od plaže Kantrida i nadomak živahnog središta Rijeke, s Opatijom, otokom Krkom i parkom prirode Učka na dohvat ruke.", "near_beach": "Plaža Kantrida ~1,5 km", "near_centre": "Središte Rijeke", "near_krk": "Otok Krk", "near_shops": "Trgovine i restorani", "contact_eyebrow": "Isplanirajmo vaš odmor", "contact_title": "Spremni za svoje kraljevsko ljeto?", "contact_sub": "Recite nam svoje termine i željeni apartman, a mi ćemo vam poslati personaliziranu ponudu.", "view_airbnb": "Pogledajte nas na Airbnbu", "gtk_title": "Dobro je znati", "gtk_checkin": "Prijava od 15:00", "gtk_checkout": "Odjava do 10:00", "gtk_nomin": "Bez minimalnog boravka", "gtk_nopets": "Kućni ljubimci nisu dopušteni", "gtk_parking": "2 besplatna privatna parkirna mjesta + besplatan parking u blizini", "f_name": "Ime", "f_email": "E-mail", "f_checkin": "Dolazak", "f_checkout": "Odlazak", "f_apt": "Apartman", "f_any": "Bez preferencije", "f_guests": "Gosti", "f_msg": "Poruka", "send_mail": "Pošalji e-mailom", "send_wa": "Pošalji putem WhatsAppa", "msg_name": "Ime", "foot_tag": "Četiri apartmana prilagođena obiteljima s privatnim bazenom i vrtom u Rijeci, Hrvatska.", "foot_visit": "Razgledaj", "foot_contact": "Kontakt"}
+};
+
+var curLang = 'en';
+// snapshot English defaults from the DOM so we can switch back
+(function(){
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    TR.en[el.dataset.i18n] = el.innerHTML;
+  });
+})();
+
+function setLang(lang){
+  curLang = lang;
+  var dict = TR[lang] || {};
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.dataset.i18n;
+    if(dict[key] !== undefined) el.innerHTML = dict[key];
+    else if(TR.en[key] !== undefined) el.innerHTML = TR.en[key]; // fallback to English
+  });
+  document.getElementById('langLabel').textContent = lang.toUpperCase();
+  document.documentElement.lang = lang;
+  document.querySelectorAll('#langMenu button').forEach(function(b){
+    b.setAttribute('aria-current', b.dataset.lang===lang ? 'true':'false');
+  });
+}
+
+var langBtn=document.getElementById('langBtn'), langMenu=document.getElementById('langMenu');
+langBtn.addEventListener('click', function(e){ e.stopPropagation(); langMenu.classList.toggle('open'); });
+document.addEventListener('click', function(){ langMenu.classList.remove('open'); });
+langMenu.querySelectorAll('button').forEach(function(b){
+  b.addEventListener('click', function(){ setLang(b.dataset.lang); langMenu.classList.remove('open'); });
+});
+</script>
+<script>
+  document.querySelectorAll('[data-photos-count]').forEach(function (wrap) {
+    var folder = wrap.dataset.photosFolder || '';
+    var prefix = wrap.dataset.photosPrefix || '';
+    var count  = parseInt(wrap.dataset.photosCount, 10);
+    var ext    = wrap.dataset.photosExt || 'jpeg';
+    var pad    = parseInt(wrap.dataset.photosPad || '2', 10);
+    var main   = wrap.querySelector('.apt-main');
+    var thumbs = wrap.querySelector('.apt-thumbs');
+    if (!main || !thumbs || !count) return;
+
+    for (var i = 1; i <= count; i++) {
+      var src = folder + '/' + prefix + String(i).padStart(pad, '0') + '.' + ext;
+      if (i === 1) main.src = src;
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'apt-thumb' + (i === 1 ? ' is-active' : '');
+      b.innerHTML = '<img src="' + src + '" alt="">';
+      thumbs.appendChild(b);
+    }
+  });
+</script>
+<script>
+  (function () {
+    var g = document.querySelector('.gallery-grid');
+    if (!g || !g.dataset.galleryCount) return;
+    var folder = g.dataset.galleryFolder,
+        prefix = g.dataset.galleryPrefix,
+        count  = parseInt(g.dataset.galleryCount, 10),
+        ext    = g.dataset.galleryExt || 'avif',
+        pad    = parseInt(g.dataset.galleryPad || '2', 10);
+    for (var i = 1; i <= count; i++) {
+      var src = folder + '/' + prefix + String(i).padStart(pad, '0') + '.' + ext;
+      var a = document.createElement('a');
+      a.innerHTML = '<img src="' + src + '" alt="Foto ' + i + '" loading="lazy">';
+      a.style.cursor = 'zoom-in';
+      (function (s) {
+        a.addEventListener('click', function () { lbImg.src = s; lb.classList.add('open'); });
+      })(src);
+      g.appendChild(a);
+    }
+  })();
+</script>
+</body>
+</html>
